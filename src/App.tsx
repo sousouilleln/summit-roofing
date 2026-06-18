@@ -1083,7 +1083,7 @@ export default function App() {
                 className="flex flex-col gap-6"
               >
                 {/* FormSubmit config */}
-                <input type="hidden" name="_next" value="https://VOTRE-SITE.vercel.app/merci.html" />
+                <input type="hidden" name="_next" value="https://summit-roofing-m9chcw6kw-dfteam1.vercel.app/" />
                 <input type="hidden" name="_subject" value="Nouveau devis — DS Plomberie Électricité" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
