@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 const ALLOWED_EXT = new Set(['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif', 'svg']);
 
@@ -7,12 +7,12 @@ function safeEquals(a, b) {
   catch { return false; }
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end('Method Not Allowed');
 
   const password = req.headers['x-cms-password'];
-  const correct  = process.env.CMS_PASSWORD;
-  if (!correct || !password || !safeEquals(password, correct)) {
+  const correct  = (process.env.CMS_PASSWORD || '').trim();
+  if (!correct || !password || !safeEquals(String(password).trim(), correct)) {
     await new Promise(r => setTimeout(r, 500));
     return res.status(401).json({ error: 'Non autorisé' });
   }
@@ -23,7 +23,12 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'GITHUB_PAT ou GITHUB_REPO non configuré' });
   }
 
-  const { filename, data } = req.body || {};
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { body = {}; }
+  }
+
+  const { filename, data } = body || {};
   if (!filename || !data) {
     return res.status(400).json({ error: 'Paramètres manquants' });
   }
@@ -37,7 +42,6 @@ module.exports = async function handler(req, res) {
     return res.status(413).json({ error: 'Image trop volumineuse (max 4 Mo)' });
   }
 
-  // Les images sont dans public/assets/uploads/ dans le dépôt GitHub
   const filePath = `public/assets/uploads/${safeName}`;
   const apiUrl   = `https://api.github.com/repos/${repo}/contents/${filePath}`;
   const headers  = {
@@ -51,18 +55,18 @@ module.exports = async function handler(req, res) {
   const checkRes = await fetch(apiUrl, { headers });
   if (checkRes.ok) sha = (await checkRes.json()).sha;
 
-  const body = { message: `CMS: upload ${safeName}`, content: data };
-  if (sha) body.sha = sha;
+  const bodyData = { message: `CMS: upload ${safeName}`, content: data };
+  if (sha) bodyData.sha = sha;
 
-  const putRes = await fetch(apiUrl, { method: 'PUT', headers, body: JSON.stringify(body) });
+  const putRes = await fetch(apiUrl, { method: 'PUT', headers, body: JSON.stringify(bodyData) });
   if (!putRes.ok) {
     const err = await putRes.json().catch(() => ({}));
     return res.status(500).json({ error: err.message || 'Erreur GitHub API' });
   }
 
   return res.status(200).json({ url: `/assets/uploads/${safeName}` });
-};
+}
 
-module.exports.config = {
+export const config = {
   api: { bodyParser: { sizeLimit: '6mb' } },
 };
