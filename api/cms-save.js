@@ -1,5 +1,3 @@
-// CMS — Étape 2 : écrit un content/*.json dans le dépôt GitHub via l'API.
-// Variables Netlify requises : CMS_PASSWORD, GITHUB_PAT, GITHUB_REPO (ex: "owner/mon-site")
 const crypto = require('crypto');
 
 const ALLOWED_FILES = new Set(['hero', 'about', 'services', 'metrics', 'process', 'testimonials', 'faq', 'contact']);
@@ -9,38 +7,39 @@ function safeEquals(a, b) {
   catch { return false; }
 }
 
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') return res.status(405).end('Method Not Allowed');
 
-  const password = event.headers['x-cms-password'];
+  const password = req.headers['x-cms-password'];
   const correct  = process.env.CMS_PASSWORD;
   if (!correct || !password || !safeEquals(password, correct)) {
     await new Promise(r => setTimeout(r, 500));
-    return { statusCode: 401, body: JSON.stringify({ error: 'Non autorisé' }) };
+    return res.status(401).json({ error: 'Non autorisé' });
   }
 
   const pat  = process.env.GITHUB_PAT;
   const repo = process.env.GITHUB_REPO;
   if (!pat || !repo) {
-    return { statusCode: 500, body: JSON.stringify({ error: 'GITHUB_PAT ou GITHUB_REPO non configuré' }) };
+    return res.status(500).json({ error: 'GITHUB_PAT ou GITHUB_REPO non configuré' });
   }
 
-  const { file, content } = JSON.parse(event.body || '{}');
+  const { file, content } = req.body || {};
 
   if (!file || !ALLOWED_FILES.has(file)) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Fichier non autorisé' }) };
+    return res.status(400).json({ error: 'Fichier non autorisé' });
   }
   if (!content || typeof content !== 'object') {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Contenu invalide' }) };
+    return res.status(400).json({ error: 'Contenu invalide' });
   }
 
-  const filePath = `content/${file}.json`;
+  // Les JSONs sont dans public/content/ dans le dépôt GitHub
+  const filePath = `public/content/${file}.json`;
   const apiUrl   = `https://api.github.com/repos/${repo}/contents/${filePath}`;
   const headers  = {
     Authorization:  `Bearer ${pat}`,
     Accept:         'application/vnd.github.v3+json',
     'Content-Type': 'application/json',
-    'User-Agent':   'netlify-cms-custom',
+    'User-Agent':   'vercel-cms-custom',
   };
 
   let sha;
@@ -48,7 +47,7 @@ exports.handler = async (event) => {
   if (getRes.ok) sha = (await getRes.json()).sha;
 
   const body = {
-    message: `CMS: mise à jour content/${file}.json`,
+    message: `CMS: mise à jour public/content/${file}.json`,
     content: Buffer.from(JSON.stringify(content, null, 2) + '\n').toString('base64'),
   };
   if (sha) body.sha = sha;
@@ -56,8 +55,8 @@ exports.handler = async (event) => {
   const putRes = await fetch(apiUrl, { method: 'PUT', headers, body: JSON.stringify(body) });
   if (!putRes.ok) {
     const err = await putRes.json().catch(() => ({}));
-    return { statusCode: 500, body: JSON.stringify({ error: err.message || 'Erreur GitHub API' }) };
+    return res.status(500).json({ error: err.message || 'Erreur GitHub API' });
   }
 
-  return { statusCode: 200, body: JSON.stringify({ ok: true }) };
+  return res.status(200).json({ ok: true });
 };

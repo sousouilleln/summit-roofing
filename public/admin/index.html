@@ -272,7 +272,7 @@ function buildDynamicForms() {
 // ── AUTH ──
 async function verifyPwd(pwd) {
   try {
-    const r = await fetch('/.netlify/functions/cms-auth', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({password: pwd}) });
+    const r = await fetch('/api/cms-auth', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({password: pwd}) });
     return r.ok;
   } catch { return false; }
 }
@@ -415,7 +415,7 @@ async function save(section) {
   const btn = document.getElementById(`btn-save-${section}`), orig = btn.textContent;
   btn.disabled = true; btn.textContent = 'Sauvegarde…';
   try {
-    const res = await fetch('/.netlify/functions/cms-save', {
+    const res = await fetch('/api/cms-save', {
       method: 'POST',
       headers: {'Content-Type':'application/json', 'x-cms-password': SESSION_PWD},
       body: JSON.stringify({file: section, content: buildPayload(section)}),
@@ -449,7 +449,7 @@ async function handleUpload(input, section, field) {
 
   try {
     const filename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
-    const res = await fetch('/.netlify/functions/cms-upload', {
+    const res = await fetch('/api/cms-upload', {
       method: 'POST',
       headers: {'Content-Type':'application/json', 'x-cms-password': SESSION_PWD},
       body: JSON.stringify({filename, data: dataUrl.split(',')[1]}),
