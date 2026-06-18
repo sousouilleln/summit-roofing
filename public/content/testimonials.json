@@ -1,0 +1,35 @@
+{
+  "eyebrow": "Témoignages",
+  "title": "Ce que disent nos clients",
+  "intro": "Notre récompense réside dans la fidélité de nos clients. Découvrez leurs témoignages suite à nos interventions.",
+  "items": [
+    {
+      "name": "Jean-Luc G.",
+      "role": "Propriétaire",
+      "location": "Rennes (35)",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300",
+      "text": "DS Plomberie Électricité est intervenue chez moi pour une rénovation complète de salle de bain. Travail d'une finesse exemplaire, délais au jour près et propreté irréprochable. Un excellent artisan."
+    },
+    {
+      "name": "Laëtitia B.",
+      "role": "Propriétaire",
+      "location": "Saint-Malo (35)",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300",
+      "text": "Appelée pour un débouchage de WC un samedi soir. L'artisan est arrivé en 45 minutes, le prix m'a été communiqué avant l'intervention et le problème a été réglé avec efficacité. Confiance absolue."
+    },
+    {
+      "name": "Sébastien & Céline M.",
+      "role": "Co-propriétaires",
+      "location": "Cesson-Sévigné (35)",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300",
+      "text": "Nous avons fait refaire notre tableau électrique général et mettre aux normes l'ensemble de la maison de 1970. Explications extrêmement claires, chantier propre et travail très soigné."
+    },
+    {
+      "name": "Martine L.",
+      "role": "Propriétaire",
+      "location": "Noyal-sur-Vilaine (35)",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=300",
+      "text": "Remplacement de chauffe-eau ultra-rapide un lundi matin après une panne le week-end. Artisan honnête, poli et compétent. Je recommande vivement ses services !"
+    }
+  ]
+}

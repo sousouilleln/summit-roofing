@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", sans-serif;
+  
+  --color-primary-cta: #0284c7; /* Vibrant water/plumbing and electric blue */
+  --color-primary-cta-text: #ffffff;
+  --color-secondary-cta: #f3f4f6; /* Elegant soft gray button */
+  --color-secondary-cta-text: #0f172a; /* Rich slate text */
+  --color-accent: #fbbf24; /* Amber gold light / power stars */
+  --color-card-bg: #ffffff;
+  --color-border-subtle: rgba(15, 23, 42, 0.06);
+}
+
+/* Global body styling */
+body {
+  font-family: var(--font-sans);
+  background-color: #fafbfc;
+  color: #0f172a;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* Custom design system button and card classes */
+.primary-button {
+  background-color: var(--color-primary-cta);
+  color: var(--color-primary-cta-text);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px -3px rgba(2, 132, 199, 0.25);
+}
+
+.primary-button:hover {
+  background-color: #0369a1; /* Deep sky blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -3px rgba(2, 132, 199, 0.35);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+}
+
+.secondary-button {
+  background-color: var(--color-secondary-cta);
+  color: var(--color-secondary-cta-text);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.secondary-button:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.secondary-button:active {
+  transform: translateY(0);
+}
+
+.card {
+  background-color: var(--color-card-bg);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 
+    0 1px 3px 0 rgba(0, 0, 0, 0.01),
+    0 4px 12px -2px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scroll reveal and animation utility classes */
+.w-content-width {
+  width: min(1200px, 92%);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+.mask-fade-top-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 65%, transparent 100%);
+}
+
+/* Custom scrollbar hider */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Watermark shine animation */
+@keyframes watermark-text-shine {
+  0% { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+.watermark-text-shine {
+  background: linear-gradient(90deg, currentColor 0%, currentColor 40%, #3d8bfa 50%, currentColor 60%, currentColor 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: watermark-text-shine 3s linear infinite;
+}

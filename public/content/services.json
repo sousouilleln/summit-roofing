@@ -1,0 +1,31 @@
+{
+  "eyebrow": "Nos Prestations",
+  "title": "Solutions Électricité & Plomberie",
+  "intro": "De l'installation neuve au dépannage urgent 24h/24 et 7j/7, nous couvrons tous vos besoins.",
+  "items": [
+    {
+      "id": 1,
+      "title": "Plomberie & Chauffage",
+      "desc": "Création et rénovation complète de salles de bain, remplacement de chauffe-eau, pose d'équipements sanitaires et réparation de fuites. Produits professionnels esthétiques et durables.",
+      "image": "/assets/uploads/modern_bathroom_1781783112628.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Électricité Générale",
+      "desc": "Mise en conformité (NF C 15-100), câblage de tableaux électriques, ajouts de prises et d'éclairages, dépannage de circuits et motorisations.",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600"
+    },
+    {
+      "id": 3,
+      "title": "Débouchage Canalisation",
+      "desc": "Curage de canalisations bouchées, éviers, toilettes et réseaux d'eaux usées. Équipement professionnel adapté pour débloquer rapidement tout type d'engorgement.",
+      "image": "https://images.unsplash.com/photo-1621905252507-b354bc25edac?q=80&w=600"
+    },
+    {
+      "id": 4,
+      "title": "Dépannage Urgent 24h/7",
+      "desc": "Intervention express en moins d'une heure pour fuites majeures, pannes électriques et sanitaires bouchés. Service fiable assuré de jour comme de nuit.",
+      "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600"
+    }
+  ]
+}

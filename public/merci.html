@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci — DS Plomberie Électricité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  theme: {
+    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+    extend: { fontFamily: { display: ['Outfit', 'Inter', 'sans-serif'] } }
+  }
+}
+</script>
+<style>
+  body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
+  .check-icon { font-size: 3rem; line-height: 1; }
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-6 bg-slate-50">
+  <div class="max-w-lg w-full text-center bg-white border border-slate-200/60 rounded-2xl p-10 md:p-16 shadow-[0_10px_40px_-10px_rgba(15,23,42,0.08)]">
+
+    <div class="w-20 h-20 mx-auto mb-8 rounded-full bg-sky-600 flex items-center justify-center shadow-lg shadow-sky-600/25">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+
+    <h1 class="font-display font-black text-4xl md:text-5xl tracking-tight text-slate-900 mb-4">
+      Demande envoyée !
+    </h1>
+    <p class="text-slate-500 mb-10 leading-relaxed">
+      Merci pour votre message. Nous avons bien reçu vos informations et nous vous recontactons dans les plus brefs délais.
+    </p>
+
+    <a href="/" class="inline-flex items-center gap-2 bg-sky-600 text-white text-sm font-semibold px-8 py-3.5 rounded-lg hover:bg-sky-700 transition-colors shadow-md shadow-sky-600/20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Retour à l'accueil
+    </a>
+
+    <p class="mt-8 text-xs text-slate-400">DS Plomberie Électricité — Rennes &amp; Saint-Malo</p>
+  </div>
+</body>
+</html>

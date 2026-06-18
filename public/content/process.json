@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Notre Méthode",
+  "title": "Un Accompagnement en 3 Étapes",
+  "intro": "De votre premier appel à la livraison finale du chantier, nous assurons un parcours simple et serein.",
+  "steps": [
+    {
+      "step_label": "ÉTAPE 01",
+      "title": "Diagnostic précis & Écoute",
+      "tags": ["Rendez-vous rapide", "Conseils éclairés", "Visite gratuite"],
+      "desc": "Qu'il s'agisse d'un projet de salle de bain ou d'un réseau électrique vétuste, nous nous déplaçons rapidement. Nous réalisons un état des lieux rigoureux de vos réseaux sanitaires et électriques pour vous proposer la solution optimale.",
+      "image": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=600"
+    },
+    {
+      "step_label": "ÉTAPE 02",
+      "title": "Devis gratuit transparent",
+      "tags": ["Sélection de matériaux", "Prix ultra-clairs", "Sans aucun engagement"],
+      "desc": "Vous recevez sous 24 à 48 heures une proposition chiffrée avec exactitude par poste. Aucun coût caché ni mauvaise surprise à la facturation. Vous choisissez vos équipements (chauffe-eau, appareillages, robinetterie) conseillés par nos soins.",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600"
+    },
+    {
+      "step_label": "ÉTAPE 03",
+      "title": "Mise en œuvre & Finitions",
+      "tags": ["Normes de sécurité", "Matériaux professionnels", "Nettoyage impeccable"],
+      "desc": "Notre équipe qualifiée effectue les raccordements et rhabillages avec soin esthétique. Toutes nos opérations électriques sont validées conformes à la norme NF C 15-100, et nous nettoyons intégralement le chantier après travaux.",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600"
+    }
+  ]
+}

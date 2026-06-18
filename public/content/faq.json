@@ -1,0 +1,31 @@
+{
+  "eyebrow": "FAQ",
+  "title": "Questions Fréquentes",
+  "intro": "Retrouvez toutes les réponses concernant nos devis gratuits, nos normes de conformité et de dépannage électricité et plomberie.",
+  "items": [
+    {
+      "question": "Quels sont vos délais en cas d'intervention urgente ?",
+      "answer": "Pour toute urgence vitale de plomberie ou d'électricité (grosse fuite d'eau, panne de courant intégrale, canalisation principale bouchée), nous intervenons généralement en moins d'une heure sur Rennes, Saint-Malo et leurs environs directes, 24h/24 et 7j/7."
+    },
+    {
+      "question": "Proposez-vous des devis gratuits pour les travaux ?",
+      "answer": "Oui ! Tous nos devis d'installation, de rénovation ou de mise en conformité sont 100% gratuits, détaillés par poste et sans aucun engagement de votre part. Les tarifs sont expliqués avant d'engager les travaux."
+    },
+    {
+      "question": "Quels types de garanties proposez-vous ?",
+      "answer": "Toutes nos réalisations d'installation et de rénovation (salle de bain, réseau électrique, chauffe-eau) bénéficient de notre assurance Garantie Décennale d'Artisan. De plus, les matériels installés profitent de la garantie constructeur totale."
+    },
+    {
+      "question": "Intervenez-vous pour de petits travaux d'appoint ?",
+      "answer": "Tout à fait. Qu'il s'agisse de changer un robinet usé, de réparer une prise de courant arrachée, d'ajouter de simples luminaires ou de déboucher un évier récalcitrant, nous accordons le même soin méticuleux aux petites interventions."
+    },
+    {
+      "question": "Quelle zone géographique couvrez-vous ?",
+      "answer": "Notre équipe se déplace sur l'ensemble du département d'Ille-et-Vilaine (35), incluant principalement la grande métropole de Rennes (Noyal-sur-Vilaine, Cesson, Pacé, Liffré...) ainsi que toute la Côte d'Émeraude jusqu'à Saint-Malo, Dinard et Cancale."
+    },
+    {
+      "question": "Vos interventions respectent-elles les normes en vigueur ?",
+      "answer": "Oui, absolument. Toutes nos installations électriques respectent scrupuleusement la norme NF C 15-100 pour votre sécurité. Nos travaux de plomberie et raccordements suivent précisément les règles de l'art du DTU de la plomberie française."
+    }
+  ]
+}
