@@ -273,8 +273,12 @@ function buildDynamicForms() {
 async function verifyPwd(pwd) {
   try {
     const r = await fetch('/api/cms-auth', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({password: pwd}) });
-    return r.ok;
-  } catch { return false; }
+    if (r.ok) return { ok: true };
+    const data = await r.json().catch(() => ({}));
+    return { ok: false, error: data.error || `Erreur ${r.status}`, status: r.status };
+  } catch (e) {
+    return { ok: false, error: 'Impossible de contacter le serveur. Vérifiez que le site est bien déployé sur Vercel.', status: 0 };
+  }
 }
 async function login() {
   const pwd = document.getElementById('pwd').value.trim();
@@ -283,9 +287,9 @@ async function login() {
   errEl.textContent = '';
   if (!pwd) { errEl.textContent = 'Veuillez saisir le mot de passe.'; return; }
   btn.disabled = true; btn.textContent = 'Connexion…';
-  const ok = await verifyPwd(pwd);
-  if (ok) { SESSION_PWD = pwd; sessionStorage.setItem('cms_pwd', pwd); await loadAll(); showEditor(); }
-  else { errEl.textContent = 'Mot de passe incorrect.'; btn.disabled = false; btn.textContent = 'Se connecter'; }
+  const result = await verifyPwd(pwd);
+  if (result.ok) { SESSION_PWD = pwd; sessionStorage.setItem('cms_pwd', pwd); await loadAll(); showEditor(); }
+  else { errEl.textContent = result.error || 'Erreur inconnue.'; btn.disabled = false; btn.textContent = 'Se connecter'; }
 }
 function logout() {
   SESSION_PWD = null; sessionStorage.removeItem('cms_pwd');
